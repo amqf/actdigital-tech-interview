@@ -1,0 +1,75 @@
+# Docker Compose para Ambiente de Desenvolvimento
+# Backend (.NET 8.0) + Frontend (Angular 20)
+
+version: '3.8'
+
+services:
+  # Backend - API .NET
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    container_name: actdigital-backend
+    ports:
+      - "5215:5215"  # Porta da API
+    volumes:
+      # Volume para hot reload - mapeia o código fonte
+      - ./backend/ProductAPI:/app/ProductAPI:delegated
+      # Cache de NuGet para melhor performance
+      - backend-nuget:/root/.nuget/packages
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5215
+    networks:
+      - actdigital-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5215/api/products"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend - Angular
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: development
+    container_name: actdigital-frontend
+    ports:
+      - "4200:4200"  # Porta do Angular dev server
+    volumes:
+      # Volume para hot reload - mapeia o código fonte
+      - ./frontend/src:/app/src:delegated
+      - ./frontend/angular.json:/app/angular.json:ro
+      - ./frontend/tsconfig.json:/app/tsconfig.json:ro
+      - ./frontend/tsconfig.app.json:/app/tsconfig.app.json:ro
+      - ./frontend/package.json:/app/package.json:ro
+      # Excluir node_modules do volume (usar o do container)
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true  # Necessário para hot reload em alguns sistemas
+    depends_on:
+      - backend
+    networks:
+      - actdigital-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:4200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+networks:
+  actdigital-network:
+    driver: bridge
+    name: actdigital-network
+
+volumes:
+  backend-nuget:
+    name: actdigital-backend-nuget
+

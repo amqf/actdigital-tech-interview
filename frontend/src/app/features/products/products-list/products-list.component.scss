@@ -1,0 +1,119 @@
+// Container principal com padding
+.container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Cabeçalho da página
+.header {
+  margin-bottom: 24px;
+
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.87);
+  }
+}
+
+// Container do spinner de carregamento
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+// Container da tabela
+.table-container {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+// Estilos da tabela
+.products-table {
+  width: 100%;
+
+  th {
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  td {
+    font-size: 14px;
+  }
+
+  // Alinhamento das ações
+  .mat-column-actions {
+    text-align: right;
+    padding-right: 16px;
+  }
+}
+
+// Estado vazio (sem produtos)
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  text-align: center;
+
+  .empty-icon {
+    font-size: 80px;
+    width: 80px;
+    height: 80px;
+    color: rgba(0, 0, 0, 0.26);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 8px 0;
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  p {
+    font-size: 14px;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.38);
+  }
+}
+
+// Badges de estoque com cores
+.stock-high {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.stock-medium {
+  color: #ff9800;
+  font-weight: 500;
+}
+
+.stock-low {
+  color: #f44336;
+  font-weight: 500;
+}
+
+// Responsividade para mobile
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .products-table {
+    font-size: 12px;
+
+    // Oculta colunas menos importantes em mobile
+    .mat-column-id,
+    .mat-column-category {
+      display: none;
+    }
+  }
+}
+

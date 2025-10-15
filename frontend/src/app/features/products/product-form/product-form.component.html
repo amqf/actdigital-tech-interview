@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="header">
+    <button 
+      mat-icon-button 
+      (click)="goBack()"
+      aria-label="Voltar">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>{{ pageTitle }}</h1>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-card *ngIf="!isLoading" class="form-card">
+    <mat-card-content>
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nome do Produto</mat-label>
+          <input 
+            matInput 
+            formControlName="name"
+            placeholder="Digite o nome do produto"
+            required>
+          <mat-icon matPrefix>label</mat-icon>
+          <mat-error *ngIf="hasError('name')">
+            {{ getErrorMessage('name') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Descrição</mat-label>
+          <textarea 
+            matInput 
+            formControlName="description"
+            placeholder="Digite uma descrição (opcional)"
+            rows="4">
+          </textarea>
+          <mat-icon matPrefix>description</mat-icon>
+          <mat-error *ngIf="hasError('description')">
+            {{ getErrorMessage('description') }}
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field-half">
+            <mat-label>Preço</mat-label>
+            <input 
+              matInput 
+              type="number"
+              formControlName="price"
+              placeholder="0.00"
+              step="0.01"
+              min="0"
+              required>
+            <span matPrefix>R$&nbsp;</span>
+            <mat-error *ngIf="hasError('price')">
+              {{ getErrorMessage('price') }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field-half">
+            <mat-label>Estoque</mat-label>
+            <input 
+              matInput 
+              type="number"
+              formControlName="stock"
+              placeholder="0"
+              min="0"
+              required>
+            <mat-icon matPrefix>inventory</mat-icon>
+            <mat-error *ngIf="hasError('stock')">
+              {{ getErrorMessage('stock') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions">
+          <button 
+            mat-stroked-button 
+            type="button"
+            (click)="goBack()">
+            <mat-icon>close</mat-icon>
+            Cancelar
+          </button>
+
+          <button 
+            mat-raised-button 
+            color="primary"
+            type="submit"
+            [disabled]="productForm.invalid || isLoading">
+            <mat-icon>save</mat-icon>
+            {{ isEditMode ? 'Atualizar' : 'Criar' }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

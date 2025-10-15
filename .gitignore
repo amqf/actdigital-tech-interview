@@ -1,0 +1,271 @@
+################################################################################
+# .gitignore - Projeto ACT Digital
+################################################################################
+# Este arquivo define os padrões de arquivos e diretórios que devem ser
+# ignorados pelo Git. Estruturado para um projeto com backend .NET e frontend
+# Angular, além de configurações de infraestrutura.
+################################################################################
+
+################################################################################
+# BACKEND - .NET / ASP.NET Core
+################################################################################
+
+# Diretórios de build e saída compilada
+backend/**/bin/
+backend/**/obj/
+
+# Arquivos de cache e temporários do .NET
+backend/**/*.cache
+backend/**/*.pdb
+backend/**/*.dll
+backend/**/*.exe
+
+# Arquivos de usuário e configurações locais do Visual Studio / Rider
+backend/**/*.user
+backend/**/*.userosscache
+backend/**/*.suo
+backend/.vs/
+backend/.vscode/settings.json
+backend/.idea/
+
+# Arquivos de log do .NET
+backend/**/*.log
+
+# Arquivos de publicação
+backend/**/publish/
+backend/**/PublishProfiles/
+
+# NuGet Packages - Não commitar pacotes, apenas o project file
+backend/**/packages/
+backend/**/*.nupkg
+backend/**/*.snupkg
+
+# Arquivos de backup e temporários
+backend/**/*~
+backend/**/*.swp
+backend/**/*.bak
+backend/**/*.tmp
+
+# Arquivos de configuração sensíveis (secrets, connection strings locais)
+backend/**/appsettings.local.json
+backend/**/*secrets*.json
+
+
+################################################################################
+# FRONTEND - Angular / Node.js
+################################################################################
+
+# Dependências do Node.js - Não commitar node_modules
+frontend/node_modules/
+
+# Diretórios de build e distribuição do Angular
+frontend/dist/
+frontend/.angular/
+frontend/out-tsc/
+
+# Cache do Angular
+frontend/.angular/cache/
+
+# Arquivos de build temporários
+frontend/**/*.js.map
+frontend/tmp/
+frontend/temp/
+
+# Arquivos de configuração local do IDE
+frontend/.vscode/settings.json
+frontend/.idea/
+
+# Logs do NPM e Yarn
+frontend/**/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Arquivos de teste e cobertura
+frontend/coverage/
+frontend/.nyc_output/
+
+# Arquivos de configuração de ambiente local (se existirem)
+frontend/src/environments/environment.local.ts
+
+# Arquivos temporários e de backup
+frontend/**/*~
+frontend/**/*.swp
+frontend/**/*.bak
+frontend/**/*.tmp
+
+
+################################################################################
+# DOCKER - Configurações e Volumes
+################################################################################
+
+# Arquivos de override locais do Docker Compose
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Volumes e dados persistentes do Docker (se não estiverem em .dockerignore)
+.docker/
+volumes/
+
+# Logs do Docker
+docker-logs/
+
+
+################################################################################
+# SISTEMA OPERACIONAL - Arquivos gerados pelo OS
+################################################################################
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+
+################################################################################
+# IDE e EDITORES - Configurações locais
+################################################################################
+
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# JetBrains IDEs (Rider, WebStorm, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+
+################################################################################
+# VARIÁVEIS DE AMBIENTE E SECRETS
+################################################################################
+
+# Arquivos de ambiente com secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Arquivos de configuração sensíveis
+secrets/
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+
+# Exceção: manter exemplos de configuração (templates)
+!.env.example
+!.env.sample
+!docker-compose.override.yml.example
+
+
+################################################################################
+# LOGS E DADOS TEMPORÁRIOS
+################################################################################
+
+# Logs gerais
+*.log
+logs/
+log/
+
+# Arquivos temporários
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Arquivos de backup
+*.bak
+*.backup
+*.old
+
+
+################################################################################
+# TESTES E COBERTURA
+################################################################################
+
+# Resultados de testes
+TestResults/
+test-results/
+
+# Cobertura de código
+coverage/
+*.coverage
+*.coveragexml
+
+
+################################################################################
+# BUILD E DISTRIBUIÇÃO - Arquivos gerados
+################################################################################
+
+# Arquivos de build genéricos
+build/
+dist/
+out/
+
+# Arquivos comprimidos gerados
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+
+################################################################################
+# GIT E CONTROLE DE VERSÃO
+################################################################################
+
+# Patches e diffs
+*.patch
+*.diff
+
+# Merge files
+*.orig
+
+
+################################################################################
+# OUTROS
+################################################################################
+
+# Arquivos de lock de processos
+*.pid
+*.seed
+*.pid.lock
+
+# Diretórios de cache genéricos
+.cache/
+cache/
+
+# Arquivos de documentação gerados automaticamente
+docs/build/

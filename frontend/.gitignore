@@ -1,0 +1,51 @@
+# Dependências
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build
+/dist/
+/tmp/
+/out-tsc/
+/bazel-out/
+
+# Profiling
+chrome-profiler-events*.json
+
+# IDEs e Editores
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Angular
+/.angular/cache
+.angular/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+
+# Testes
+/coverage/
+*.lcov
+.nyc_output/
+

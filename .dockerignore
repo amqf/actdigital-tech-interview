@@ -1,0 +1,36 @@
+# .dockerignore na raiz do projeto
+
+# Node modules
+**/node_modules
+**/npm-debug.log
+
+# .NET build artifacts
+**/bin
+**/obj
+**/.vs
+**/.vscode
+**/publish
+
+# Arquivos de desenvolvimento
+**/*.swp
+**/*.swo
+**/.DS_Store
+**/.git
+**/.gitignore
+**/.env
+
+# Diretórios de build
+**/dist
+**/build
+**/.angular
+
+# Logs
+**/*.log
+
+# IDE
+**/.idea
+**/*.suo
+**/*.user
+**/*.userosscache
+**/*.sln.docstates
+
